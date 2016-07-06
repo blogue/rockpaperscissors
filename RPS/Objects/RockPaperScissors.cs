@@ -6,19 +6,23 @@ namespace RockPaperScissors.Objects
   public class Game
   {
     private static string[] _rpsOptions = {"rock", "paper", "scissors"};
-    private Dictionary<string, int> _wins = new Dictionary<string, int> {};
+    private int _player1wins;
+    private int _player2wins;
+    private static List<Game> _gameInstances = new List<Game> {};
 
     public Game()
     {
-      _wins["player1"] = 0;
-      _wins["player2"] = 0;
+      _player1wins = 0;
+      _player2wins = 0;
+      _gameInstances.Add(this);
+      Console.WriteLine("new game created");
     }
 
-    public Dictionary<string, int> Turn(int player1choice, int player2choice)
+    public void Turn(int player1choice, int player2choice)
     {
       if (player1choice == player2choice)
       {
-        return _wins;
+        // return _wins;
       }
       else
       {
@@ -26,16 +30,30 @@ namespace RockPaperScissors.Objects
             (_rpsOptions[player1choice] == "paper" && _rpsOptions[player2choice] == "rock") ||
             (_rpsOptions[player1choice] == "scissors" && _rpsOptions[player2choice] == "paper"))
         {
-          _wins["player1"] ++;
-          return _wins;
+          _player1wins ++;
+          // return _wins;
         }
         else
         {
-          _wins["player2"] ++;
-          return _wins;
+          _player2wins ++;
+          // return _wins;
         }
       }
     }
 
+    public static List<Game> GetGame()
+    {
+      return _gameInstances;
+    }
+
+    public int GetPlayer1Wins()
+    {
+      return _player1wins;
+    }
+
+    public int GetPlayer2Wins()
+    {
+      return _player2wins;
+    }
   }
 }
