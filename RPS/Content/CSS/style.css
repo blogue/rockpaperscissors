@@ -1,15 +1,23 @@
 body {
   text-align: center;
+  font-family: sans-serif;
+  font-variant: small-caps;
 }
 
 #countdown {
   font-size: 150px;
+  margin-bottom: 20px;
 }
 
-.arrowkey, .RPS {
+.arrowkey, .RPS, img {
   display: inline-block;
   width: 100px;
   margin: 5px;
+}
+
+img {
+  width: 50px;
+  margin: 5px 25px;
 }
 
 #player1 {
@@ -25,4 +33,9 @@ body {
   width: 50%;
   border-radius: 20px;
   margin: auto;
+}
+
+#player1 div h3, #player2 div h3 {
+  padding-top: 6px;
+  margin-bottom: 5px;
 }
