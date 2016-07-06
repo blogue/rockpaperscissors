@@ -19,15 +19,15 @@ namespace RockPaperScissors.Objects
       _gameInstances.Add(this);
     }
 
-    public void Turn(int player1choice, int player2choice)
+    public void Turn(string player1choice, string player2choice)
     {
-      _lastChoices[0] = _rpsOptions[player1choice];
-      _lastChoices[1] = _rpsOptions[player2choice];
+      _lastChoices[0] = player1choice;
+      _lastChoices[1] = player2choice;
       if (player1choice != player2choice)
       {
-        if ((_rpsOptions[player1choice] == "rock" && _rpsOptions[player2choice] == "scissors") ||
-            (_rpsOptions[player1choice] == "paper" && _rpsOptions[player2choice] == "rock") ||
-            (_rpsOptions[player1choice] == "scissors" && _rpsOptions[player2choice] == "paper"))
+        if ((player1choice == "rock" && player2choice == "scissors") ||
+            (player1choice == "paper" && player2choice == "rock") ||
+            (player1choice == "scissors" && player2choice == "paper"))
         {
           _player1wins ++;
           _winLoseOrDraw = "beats";
