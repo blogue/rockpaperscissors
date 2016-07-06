@@ -17,9 +17,10 @@ namespace RockPaperScissors
       Post["/result"] = _ => {
         Game userGame = Game.GetGame()[0];
         userGame.Turn(Request.Form["choice1"],Request.Form["choice2"]);
-        return View["results.cshtml", userGame];
+        return View["play.cshtml", userGame];
       };
       Get["/play"] = _ => {
+        Game userGame = Game.GetGame()[0];
         return View["play.cshtml"];
       };
     }
