@@ -9,36 +9,40 @@ namespace RockPaperScissors.Objects
     private int _player1wins;
     private int _player2wins;
     private static List<Game> _gameInstances = new List<Game> {};
+    private List<string> _lastChoices = new List<string> { "none", "none"};
+    private string _winLoseOrDraw;
 
     public Game()
     {
       _player1wins = 0;
       _player2wins = 0;
       _gameInstances.Add(this);
-      Console.WriteLine("new game created");
     }
 
     public void Turn(int player1choice, int player2choice)
     {
-      if (player1choice == player2choice)
-      {
-        // return _wins;
-      }
-      else
+      _lastChoices[0] = _rpsOptions[player1choice];
+      _lastChoices[1] = _rpsOptions[player2choice];
+      if (player1choice != player2choice)
       {
         if ((_rpsOptions[player1choice] == "rock" && _rpsOptions[player2choice] == "scissors") ||
             (_rpsOptions[player1choice] == "paper" && _rpsOptions[player2choice] == "rock") ||
             (_rpsOptions[player1choice] == "scissors" && _rpsOptions[player2choice] == "paper"))
         {
           _player1wins ++;
-          // return _wins;
+          _winLoseOrDraw = "beats";
         }
         else
         {
           _player2wins ++;
-          // return _wins;
+          _winLoseOrDraw = "loses to";
         }
       }
+      else
+      {
+        _winLoseOrDraw = "ties";
+      }
+
     }
 
     public static List<Game> GetGame()
@@ -54,6 +58,11 @@ namespace RockPaperScissors.Objects
     public int GetPlayer2Wins()
     {
       return _player2wins;
+    }
+
+    public string GetGameOutcome()
+    {
+      return _lastChoices[0] + " " + _winLoseOrDraw + " " + _lastChoices[1];
     }
   }
 }
