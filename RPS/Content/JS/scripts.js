@@ -1,4 +1,5 @@
-//get input from arrow keys
+$('#gameForm').hide();
+function UsersChoose() {
   window.addEventListener("keydown", moveSomething, false);
   function moveSomething(e) {
     switch(e.keyCode) {
@@ -22,16 +23,25 @@
         break;
     }
   }
+}
+console.log("hey guyz");
 
 $('#countdown').text('5');
 var timer = setInterval(function() {
   $("#countdown").text(function(i,html) {
-    if(parseInt(html)>0)
+    if(parseInt(html)>1)
     {
       return parseInt(html)-1;
     } else {
       clearTimeout(timer);
+      UsersChoose();
       return "Shoot!";
     }
   });
 }, 1000);
+
+$(document).keypress(function() {
+  if ($('#player1choice').val() !== "" && $('#player2choice').val() !== "") {
+    $('#gameForm').submit();
+  }
+});

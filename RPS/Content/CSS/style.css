@@ -1,0 +1,28 @@
+body {
+  text-align: center;
+}
+
+#countdown {
+  font-size: 150px;
+}
+
+.arrowkey, .RPS {
+  display: inline-block;
+  width: 100px;
+  margin: 5px;
+}
+
+#player1 {
+  padding-bottom: 10px;
+  background-color: #ffeeee;
+  width: 50%;
+  border-radius: 20px;
+  margin: auto;
+}
+
+#player2 {
+  background-color: #eeeeee;
+  width: 50%;
+  border-radius: 20px;
+  margin: auto;
+}
